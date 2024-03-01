@@ -1,47 +1,74 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+	import SignIn from './lib/SignIn.svelte'
+	import Modal from './lib/Modal.svelte'
+	import Home from './lib/Home.svelte'
+	import Input from './lib/Input.svelte'
+	import Output from './lib/Output.svelte'
+	import Matrix from './lib/Matrix.svelte'
+
+	let selected1
+	let selected2
+	let quantity = 1
+	let result
+
+	let home
+
+	function hide(page) {
+		page.classList.add('fade')
+		page.addEventListener('transitionend',()=> {
+			page.classList.add('d-none')
+		})
+	}
+
+	setTimeout(()=>{hide(home)}, 1000)
+
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+<!--
+<div class="container-sm">
+	<Home bind:home={home}/>
+	<SignIn/> 
+</div>
+<SignIn/> 
+
+-->
+<Matrix />
+
+<!--
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Input"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Output"></button>
   </div>
-  <h1>Vite + Svelte</h1>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+		<Home bind:home={home}/>
+		<Input
+			bind:selected1={selected1}
+			bind:selected2={selected2}
+			bind:quantity={quantity}
+			bind:result={result}
+		/>      
+    </div>
 
-  <div class="card">
-    <Counter />
+    <div class="carousel-item">
+		<Output
+			bind:selected1={selected1}
+			bind:selected2={selected2}
+			bind:quantity={quantity}
+			bind:result={result}
+		/>      
+    </div>
   </div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+</div>
+-->
